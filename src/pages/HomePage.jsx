@@ -1,6 +1,6 @@
 import FixedEmail from "../components/FixedEmail"
 import HeroSection from "../components/HeroSection"
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar/Navbar"
 import SocialLinks from "../components/SocialLinks"
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -13,6 +13,7 @@ import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 import { useEffect, useRef, useState } from "react";
 import LoadingUI from "../components/LoadingUI";
+import MobileNavbar from "../components/Navbar/MobileNavbar";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger)
@@ -131,12 +132,12 @@ const HomePage = () => {
   useEffect(() => {
     const body = document.querySelector("body");
 
-    if(isLoadingUI) {
+    if (isLoadingUI) {
       body.style.overflow = "hidden";
     }
     else {
       body.style.overflowY = "scroll";
-      
+
     }
   }, [isLoadingUI]);
 
@@ -151,6 +152,7 @@ const HomePage = () => {
       {/* ---- Header Part ---- */}
       <header>
         <Navbar handleScrollTo={handleScrollTo} prevScrollValue={prevScrollValue} />
+        <MobileNavbar handleScrollTo={handleScrollTo} prevScrollValue={prevScrollValue} />
       </header>
 
       {/* ---- Main Part ---- */}

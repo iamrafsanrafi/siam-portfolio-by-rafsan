@@ -152,4 +152,49 @@ body {
 @theme {
   --font-mono: "SF Mono", monospace;
   --font-calibre: "Calibre", sans-serif;
+  --animate-cross-spin-forward: crossSpinForward 0.19s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  --animate-cross-spin-backward: crossSpinBackward 0.19s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  --animate-menu-collapse: menuCollapse 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  --animate-menu-open: menuOpen 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s forwards;
+}
+
+@keyframes menuCollapse {
+  0% {
+    row-gap: 8px;
+  }
+
+  100% {
+    row-gap: 0;
+  }
+}
+
+@keyframes menuOpen {
+  0% {
+
+    row-gap: 0;
+  }
+
+  100% {
+    row-gap: 8px;
+  }
+}
+
+@keyframes crossSpinForward {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes crossSpinBackward {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
 }
