@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react"
 import Button from "../Button";
 import { navOptions } from "../../constants/data";
-import { useMediaQuery } from "react-responsive";
 
 const Navbar = ({ handleScrollTo, prevScrollValue }) => {
     // States
     const [isNavSticky, setIsNavSticky] = useState(false);
     const [hideStickyNav, setHideStickyNav] = useState(false);
-
-    // Navbar extra responsive breakpoint
-    const isLaptop = useMediaQuery({minWidth: 1000});
 
     // useEffect to manage the sticky nav on window scroll
     useEffect(() => {
@@ -55,7 +51,10 @@ const Navbar = ({ handleScrollTo, prevScrollValue }) => {
 
     return (
         <nav
-            className={`hidden md:flex items-center justify-between fixed z-10 w-full bg-[#0a192f] ${isLaptop ? "px-[50px]" : "px-10"} ${isNavSticky ? "h-[70px] [box-shadow:0_10px_30px_-10px_rgba(2,12,27,0.7)]" : "h-[100px]"} ${hideStickyNav ? "-translate-y-[100%]" : ""}`}
+            className={`hidden md:flex items-center justify-between fixed z-10 w-full bg-[#0a192f] px-[50px] ${isNavSticky ? "h-[70px] [box-shadow:0_10px_30px_-10px_rgba(2,12,27,0.7)]" : "h-[100px]"} ${hideStickyNav ? "-translate-y-[100%]" : ""}`}
+            style={{
+                transition: "0.25s cubic-bezier(0.645, 0.045, 0.355, 1)"
+            }}
         >
             {/* ---- Logo ---- */}
             <a

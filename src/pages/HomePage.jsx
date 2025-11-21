@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import { useEffect, useRef, useState } from "react";
 import LoadingUI from "../components/LoadingUI";
 import MobileNavbar from "../components/Navbar/MobileNavbar";
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger)
@@ -22,6 +23,10 @@ gsap.registerPlugin(ScrollToPlugin)
 const HomePage = () => {
   // States
   const [isLoadingUI, setIsLoadingUI] = useState(true);
+
+  // Extra responsive breakpoint
+  const breakpoint1 = useMediaQuery({ minWidth: 481 });
+  const breakpoint2 = useMediaQuery({minWidth: 1001});
 
   // Extra hooks
   const prevScrollValue = useRef(0);
@@ -156,7 +161,7 @@ const HomePage = () => {
       </header>
 
       {/* ---- Main Part ---- */}
-      <main className="px-[150px]">
+      <main className={`max-w-[1600px] mx-auto ${breakpoint1 ? "px-[50px]" : "px-[25px]"} ${breakpoint2 ? "px-[150px]" : "md:px-[100px]"}`}>
         <HeroSection />
         <AboutSection />
         <ExperienceSection />

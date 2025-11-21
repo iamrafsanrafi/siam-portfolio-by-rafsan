@@ -1,6 +1,6 @@
 const FixedEmail = () => {
     return (
-        <div id="fixed-email" className="fixed bottom-0 right-[40px] flex flex-col items-center">
+        <div id="fixed-email" className="fixed hidden md:flex bottom-0 right-[40px] flex-col items-center">
             {/* ---- Email ---- */}
             <a
                 href="mailto:siamtalukder484@gmail.com"

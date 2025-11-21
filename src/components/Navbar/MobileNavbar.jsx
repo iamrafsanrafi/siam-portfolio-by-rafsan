@@ -15,7 +15,7 @@ const MobileNavbar = ({ handleScrollTo, prevScrollValue }) => {
     const sidebarRef = useRef(null);
 
     // Sidebar responsive breakpoints
-    const isSmallerMobile = useMediaQuery({maxWidth: 330});
+    const isSmallerMobile = useMediaQuery({ maxWidth: 330 });
     const isMobile = useMediaQuery({ maxWidth: 480 });
     const isTablet = useMediaQuery({ minWidth: 600 });
 
@@ -112,6 +112,9 @@ const MobileNavbar = ({ handleScrollTo, prevScrollValue }) => {
     return (
         <nav
             className={`md:hidden flex items-center justify-between fixed z-10 w-full bg-[#0a192f] px-[25px] ${isNavSticky ? "h-[70px] [box-shadow:0_10px_30px_-10px_rgba(2,12,27,0.7)]" : "h-[100px]"} ${hideStickyNav ? "-translate-y-[100%]" : ""} `}
+            style={{
+                transition: "0.25s cubic-bezier(0.645, 0.045, 0.355, 1)"
+            }}
         >
             {/* ---- Logo ---- */}
             <a
@@ -134,7 +137,7 @@ const MobileNavbar = ({ handleScrollTo, prevScrollValue }) => {
                     <div className="w-6 h-[2px] bg-[#64ffda] rounded-[3px]"></div>
                 </div>
 
-                {/* ---- Cross Icon ---- */}
+                {/* ---- Cross Icon (Manual Design) ---- */}
                 <div
                     onClick={endAnimation}
                     className={`${(animateCross && showSidebar) && "block"} ${!animateCross ? "hidden" : ""} absolute top-[-15px] right-[-15px] z-20 p-[15px] active:bg-[#226185]`}
