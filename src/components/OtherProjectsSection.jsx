@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useRef, useState } from "react";
 import RedirectIcon from "../icons/RedirectIcon";
 import GitHubIcon from "../icons/GitHubIcon";
+import { useMediaQuery } from "react-responsive";
 
 const OtherProjectsSection = () => {
     // Constants
@@ -17,6 +18,10 @@ const OtherProjectsSection = () => {
     // Extra hooks
     const hasAnimatedRef = useRef(false);
     const previousLimitRef = useRef(INITIAL_LIMIT);
+
+    // Extra responsive breakpoints
+    const breakpoint1 = useMediaQuery({ maxWidth: 614 });
+    const breakpoint2 = useMediaQuery({ maxWidth: 1229 });
 
     // Functions
     const showMore = () => setShowingLimit(otherProjects.length);
@@ -102,25 +107,23 @@ const OtherProjectsSection = () => {
     }, [showingLimit]);
 
     return (
-        <section id="other-projects" className="max-w-[1000px] mx-auto py-[150px]">
+        <section id="other-projects" className="max-w-[1000px] mx-auto py-[100px] md:py-[150px]">
             {/* ---- Section Heading ---- */}
             <div className="heading flex flex-col items-center">
-                <h3 className="font-calibre text-[32px] text-[#ccd6f6] font-semibold leading-[42px]">
+                <h3 className="font-calibre text-2xl leading-[31px] md:text-[32px] md:leading-[42px] text-[#ccd6f6] font-semibold">
                     Other Noteworthy Projects
                 </h3>
             </div>
 
             {/* ---- Other Projects ---- */}
-            <div className="grid grid-cols-3 gap-[15px] mt-[50px] cursor-default transition-all duration-300">
+            <div className={`grid grid-cols-12 gap-[15px] mt-[50px] cursor-default transition-all duration-300`}>
                 {otherProjects.slice(0, showingLimit).map((project, index) => (
                     <a
                         key={project.id}
                         href={project.link}
                         target="_blank"
-                        className={`${index + 1 <= INITIAL_LIMIT
-                            ? "project"
-                            : "more-project opacity-0"
-                            } block w-[324px] bg-[#172a45] py-8 px-7 transition-all hover:-translate-y-[5px] group`}
+                        tabIndex={0}
+                        className={`${index + 1 <= INITIAL_LIMIT ? "project" : "more-project opacity-0"} ${breakpoint1 ? "col-span-12" : ""} ${(!breakpoint1 && breakpoint2) ? "col-span-6" : "col-span-4"} block bg-[#172a45] py-8 px-7 transition-all focus:-translate-y-[5px] active:-translate-y-[5px] hover:-translate-y-[5px] group`}
                         style={{
                             boxShadow: "rgba(2, 12, 27, 0.7) 0px 10px 30px -15px",
                             transition: "0.25s cubic-bezier(0.645, 0.045, 0.355, 1)"
@@ -128,9 +131,7 @@ const OtherProjectsSection = () => {
                     >
                         <div className="flex items-center justify-between">
                             <FolderIcon />
-
-
-                            <div>
+                            <div className="mr-[-10px]">
                                 <a
                                     href={project.github}
                                     target="_blank"
@@ -163,7 +164,7 @@ const OtherProjectsSection = () => {
                             {project.title}
                         </h4>
 
-                        <p className="font-calibre text-[17px] text-justify text-[#a8b2d1] leading-[22px] mb-[15px]">
+                        <p className="font-calibre text-[17px] text-justify text-[#a8b2d1] leading-[22px] mb-[35px]">
                             {project.description}
                         </p>
 

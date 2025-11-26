@@ -3,7 +3,7 @@ import Button from "../Button";
 import { navOptions } from "../../constants/data";
 import { useMediaQuery } from "react-responsive";
 
-const MobileNavbar = ({ handleScrollTo, prevScrollValue }) => {
+const MobileNavbar = ({ handleScrollTo }) => {
     // States
     const [isNavSticky, setIsNavSticky] = useState(false);
     const [hideStickyNav, setHideStickyNav] = useState(false);
@@ -13,6 +13,7 @@ const MobileNavbar = ({ handleScrollTo, prevScrollValue }) => {
 
     // Extra hooks
     const sidebarRef = useRef(null);
+    const prevScrollValue = useRef(0);
 
     // Sidebar responsive breakpoints
     const isSmallerMobile = useMediaQuery({ maxWidth: 330 });
@@ -37,6 +38,8 @@ const MobileNavbar = ({ handleScrollTo, prevScrollValue }) => {
                 if (currentScroll > 80) {
                     if (scrollingDown) {
                         setHideStickyNav(true);
+                        console.log("HELLO");
+                        console.log(hideStickyNav)
                     }
                     else if (scrollingUp) {
                         setHideStickyNav(false);

@@ -157,7 +157,7 @@ const HomePage = () => {
       {/* ---- Header Part ---- */}
       <header>
         <Navbar handleScrollTo={handleScrollTo} prevScrollValue={prevScrollValue} />
-        <MobileNavbar handleScrollTo={handleScrollTo} prevScrollValue={prevScrollValue} />
+        <MobileNavbar handleScrollTo={handleScrollTo} />
       </header>
 
       {/* ---- Main Part ---- */}
